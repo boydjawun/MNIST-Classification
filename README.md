@@ -1,55 +1,5 @@
 README: MNIST Digit Classification with Convolutional Neural Network (CNN)
-This repository contains a comprehensive implementation of a Convolutional Neural Network (CNN) to classify handwritten digits from the MNIST dataset. Below is a detailed explanation of the steps and processes involved in the code, as demonstrated in the provided images.
-•  Importing Packages and Loading the MNIST Dataset
-	•  The process begins by importing essential Python libraries, including torch, torchvision, and matplotlib, to handle neural network operations, data transformations, and visualization.
-	•  The MNIST dataset is loaded using torchvision.datasets.MNIST, with the dataset stored in the current directory (./).
-	•  Data transformations are applied using transforms.ToTensor() to convert MNIST images into tensors.
-	•  The dataset is split into training, validation, and test sets:
-		•  Training set: First 10,000 images.
-		•  Validation set: Next 10,000 images.
-		•  Test set: Remaining images.
-	•  DataLoaders are created with a batch size of 64, enabling shuffled data loading for training and validation.
-•  Creating the CNN Model with nn.Sequential
-	•  A CNN model is constructed using nn.Sequential, a sequential container for stacking layers.
-	•  The architecture includes:
-		•  First convolutional layer (Conv2d) with 1 input channel, 32 output channels, a 5x5 kernel, and padding of 2.
-		•  ReLU activation function for non-linearity.
-		•  Max pooling layer (MaxPool2d) with a 2x2 kernel to reduce spatial dimensions.
-		•  Second convolutional layer with 32 input channels, 64 output channels, a 5x5 kernel, and padding of 2.
-		•  Another ReLU and MaxPool2d layer.
-		•  A flatten layer to transition from convolutional to fully connected layers.
-		•  Two fully connected layers (Linear): first with 3136 input features and 1024 output features, followed by ReLU and dropout (p=0.5); second with 1024 input features and 10 output features (for 10 digit classes).
-	•  The model processes a sample input to verify the output shape, resulting in a tensor of shape (4, 64, 7, 7) after convolutions and pooling, and (4, 3136) after flattening.
-•  Defining Loss Function and Optimizer
-	•  The cross-entropy loss function (nn.CrossEntropyLoss) is used to measure the difference between predicted and actual digit labels.
-	•  The Adam optimizer is initialized with a learning rate of 0.001 to update the model parameters during training.
-•  Training the Model with Training and Validation Sets
-	•  A train function is defined to train the model over a specified number of epochs (set to 20).
-	•  The training loop includes:
-		•  Setting the model to training mode.
-		•  Iterating over batches in the training DataLoader, computing predictions, loss, and backpropagation.
-		•  Updating model parameters using the optimizer.
-		•  Calculating and storing training loss and accuracy for each epoch.
-	•  Validation is performed after each training epoch:
-		•  Setting the model to evaluation mode.
-		•  Iterating over validation batches, computing predictions and loss without gradient computation.
-		•  Storing validation loss and accuracy.
-	•  Accuracy is computed by comparing the argmax of predictions with true labels, averaged over the dataset size.
-•  Viewing Training and Validation Accuracy and Loss
-	•  The training and validation loss and accuracy histories are visualized using matplotlib.
-	•  Two subplots are created:
-		•  The first plot displays training loss (blue) and validation loss (orange) over epochs, showing a decreasing trend.
-		•  The second plot shows training accuracy (blue) and validation accuracy (orange), indicating an increasing trend toward high accuracy (around 0.99).
-	•  The plots are labeled with appropriate legends and axis titles for clarity.
-•  Viewing Test Accuracy
-	•  The trained model is evaluated on the test dataset.
-	•  Predictions are made, and test accuracy is calculated as the mean of correct predictions (where argmax of predictions matches true labels), achieving approximately 0.9915.
-•  Viewing Elements with Maximum Probability
-	•  The code visualizes a subset of test images with their predicted labels.
-	•  A 2x6 grid of images is created, displaying the first 12 test images.
-	•  Each image is shown in grayscale, with the predicted digit label overlaid in blue text at the top center.
-	•  The model correctly identifies most digits, with examples including 7, 2, 1, 0, 4, 1, 4, 9, 5, 9, 0, and 6.
-This implementation demonstrates a complete workflow for building, training, and evaluating a CNN on the MNIST dataset, with visualizations to assess model performance. The code is structured for reproducibility and can be extended for further experimentation.
+This repository showcases a concise implementation of a Convolutional Neural Network (CNN) to classify handwritten digits from the MNIST dataset. The process starts by importing essential libraries like torch, torchvision, and matplotlib, followed by loading the MNIST dataset into the current directory with transforms.ToTensor() to convert images to tensors. The dataset is split into training (first 10,000 images), validation (next 10,000 images), and test sets, with DataLoaders created using a batch size of 64. The CNN model is built using nn.Sequential, featuring two convolutional layers (32 and 64 output channels with 5x5 kernels and padding 2), ReLU activations, max pooling layers (2x2 kernel), a flatten layer, and two fully connected layers (3136 to 1024 with dropout, then 1024 to 10 outputs). The model’s architecture is verified with a sample input. A cross-entropy loss function and Adam optimizer (learning rate 0.001) are defined for training. The train function runs for 20 epochs, computing and storing training and validation loss and accuracy, with the model set to training and evaluation modes respectively. Visualization of results uses matplotlib to plot training and validation loss and accuracy over epochs, showing decreasing loss and increasing accuracy (up to ~0.99). Test accuracy is evaluated at ~0.9915, and a 2x6 grid of test images with predicted labels is displayed, correctly identifying digits like 7, 2, 1, 0, 4, and others. This implementation provides a complete, reproducible workflow for CNN training and evaluation on MNIST, suitable for further experimentation.
 
 <img width="1507" height="835" alt="Screenshot 2025-09-20 185846" src="https://github.com/user-attachments/assets/643e6844-0499-4e6f-8f3f-635e209d94eb" />
 <img width="1512" height="755" alt="Screenshot 2025-09-20 185929" src="https://github.com/user-attachments/assets/835d416b-4093-489d-ace9-5550a6161cce" />
