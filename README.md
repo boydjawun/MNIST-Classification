@@ -1,6 +1,23 @@
-# MNIST Classification
-README: MNIST Digit Classification with Convolutional Neural Network (CNN)
-This repository showcases a concise implementation of a Convolutional Neural Network (CNN) to classify handwritten digits from the MNIST dataset. The process starts by importing essential libraries like torch, torchvision, and matplotlib, followed by loading the MNIST dataset into the current directory with transforms.ToTensor() to convert images to tensors. The dataset is split into training (first 10,000 images), validation (next 10,000 images), and test sets, with DataLoaders created using a batch size of 64. The CNN model is built using nn.Sequential, featuring two convolutional layers (32 and 64 output channels with 5x5 kernels and padding 2), ReLU activations, max pooling layers (2x2 kernel), a flatten layer, and two fully connected layers (3136 to 1024 with dropout, then 1024 to 10 outputs). The model’s architecture is verified with a sample input. A cross-entropy loss function and Adam optimizer (learning rate 0.001) are defined for training. The train function runs for 20 epochs, computing and storing training and validation loss and accuracy, with the model set to training and evaluation modes respectively. Visualization of results uses matplotlib to plot training and validation loss and accuracy over epochs, showing decreasing loss and increasing accuracy (up to ~0.99). Test accuracy is evaluated at ~0.9915, and a 2x6 grid of test images with predicted labels is displayed, correctly identifying digits like 7, 2, 1, 0, 4, and others. This implementation provides a complete, reproducible workflow for CNN training and evaluation on MNIST, suitable for further experimentation.
+# MNIST Digit Classification with Convolutional Neural Network (CNN)
+# Description
+This repository showcases a concise implementation of a Convolutional Neural Network (CNN) to classify handwritten digits from the MNIST dataset. 
+The process starts by importing essential libraries:
+- Torch
+- Torchvision
+- Matplotlib
+  
+Followed by loading the MNIST dataset into the current directory with transforms.ToTensor() to convert images to tensors.
+
+The dataset is split into training (first 10,000 images), validation (next 10,000 images), and test sets, with dataloaders created using a batch size of 64. The CNN model is built using nn.Sequential, featuring:
+- Two convolutional layers (32 and 64 output channels with 5x5 kernels and padding 2)
+- ReLU activations
+- Max pooling layers (2x2 kernel)
+- A flatten layer
+- Two fully connected layers (3136 to 1024 with dropout, then 1024 to 10 outputs)
+
+The model’s architecture is verified with a sample input. A cross-entropy loss function and Adam optimizer (learning rate 0.001) are defined for training. The train function runs for 20 epochs, computing and storing training and validation loss and accuracy, with the model set to training and evaluation modes respectively. Visualization of results uses matplotlib to plot training and validation loss and accuracy over epochs, showing decreasing loss and increasing accuracy (up to ~0.99).
+
+Test accuracy is evaluated at ~0.9915, and a 2x6 grid of test images with predicted labels is displayed, correctly identifying digits like 7, 2, 1, 0, 4, and others. This implementation provides a complete, reproducible workflow for CNN training and evaluation on MNIST, suitable for further experimentation.
 
 <img width="1507" height="835" alt="Screenshot 2025-09-20 185846" src="https://github.com/user-attachments/assets/643e6844-0499-4e6f-8f3f-635e209d94eb" />
 <img width="1512" height="755" alt="Screenshot 2025-09-20 185929" src="https://github.com/user-attachments/assets/835d416b-4093-489d-ace9-5550a6161cce" />
